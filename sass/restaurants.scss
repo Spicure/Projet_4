@@ -1,0 +1,265 @@
+// @use "./outils/index.scss" as *;
+
+@import "./mixins";
+@import "./variables";
+
+html {
+  height: 100%;
+}
+body {
+  @include basic-settings;
+  font-family: $text-font;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  margin: 0.8rem auto;
+}
+
+.titre {
+  font-family: $title-font;
+}
+
+header i {
+  position: absolute;
+  font-size: 23px;
+  left: 5%;
+  top: 0.8rem;
+}
+
+.banniere {
+  width: 100%;
+  height: 14rem;
+
+  @include desktop {
+    height: 18rem;
+  }
+}
+
+.banniere img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
+
+main {
+  position: relative;
+  border-radius: 30px 30px 0px 0px;
+  top: -3rem;
+  margin-bottom: -3rem;
+  padding-bottom: 3rem;
+  background-color: $light-grey;
+
+  @include desktop {
+    position: relative;
+    top: -30px;
+    margin: auto;
+    margin-bottom: -30px;
+    width: 80%;
+  }
+}
+
+.favoris {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 90%;
+  margin: auto;
+  padding-top: 1.5rem;
+
+  @include desktop {
+    column-gap: 1rem;
+    justify-content: center;
+  }
+}
+
+.favoris h2 {
+  font-family: $title-font;
+  margin: 0;
+}
+
+.favoris i {
+  font-size: 24px;
+}
+
+.menu {
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2rem;
+
+  @include desktop {
+    width: 70%;
+  }
+}
+
+.card h3 {
+  text-transform: uppercase;
+  font-weight: map-get($map: $font-weights, $key: light);
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.card h3::after {
+  content: "";
+  display: block;
+  position: absolute;
+  margin-top: 2px;
+  width: 45px;
+  height: 4px;
+  background-color: $tertiaire-color;
+}
+
+.plats {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 1rem;
+  width: 100%;
+}
+
+.card__details {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  box-shadow: $normal;
+  border-radius: 15px;
+  position: relative;
+  align-items: center;
+  padding: 0.7rem;
+  cursor: pointer;
+}
+
+.card__food {
+  width: 80%;
+}
+
+.card__food,
+.card__food h4,
+.card__food p,
+.card__details {
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__prix {
+  font-weight: bold;
+  align-self: center;
+  font-size: 1rem;
+  justify-self: flex-end;
+  padding-right: 0.2rem;
+}
+
+.card__valider {
+  color: white;
+  font-size: 1.7rem;
+  height: 100%;
+  padding: 0 1.2rem;
+  border-radius: 0px 15px 15px 0px;
+  background-color: $tertiaire-color;
+  display: none;
+  position: absolute;
+  right: -3rem;
+}
+
+.fa-heart:hover {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  background: #ff79da;
+  background: -webkit-linear-gradient(to right, #9356dc 21%, #ff79da 100%);
+  background: linear-gradient(to right, #9356dc 21%, #ff79da 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: 500ms ease-out;
+}
+
+.card--transition {
+  animation: appear 1.5s 1 both ease;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@for $i from 1 through 10 {
+  #card-#{$i} {
+    animation-delay: (($i - 1) * 2 / 10) + s;
+  }
+}
+
+button {
+  @include button;
+}
+
+button:hover {
+  @include button-hover;
+}
+
+.bouton-centre {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  background-color: $black;
+  color: white;
+  padding: 1rem;
+  @include desktop {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding-left: 40%;
+    align-items: center;
+    column-gap: 64px;
+    padding-right: 64px;
+  }
+}
+
+footer h3 {
+  font-size: 16px;
+  font-weight: map-get($map: $font-weights, $key: regular);
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+
+  @include desktop {
+    width: 95%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 16px;
+    align-items: center;
+  }
+}
+
+footer li {
+  margin-bottom: 0.8rem;
+
+  @include desktop {
+    margin: 0;
+    display: flex;
+  }
+}
