@@ -272,6 +272,18 @@ h1 {
   font-size: 1.7rem;
 }
 
+.card__description i:hover {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  background: #ff79da;
+  background: -webkit-linear-gradient(to right, #9356dc 21%, #ff79da 100%);
+  background: linear-gradient(to right, #9356dc 21%, #ff79da 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: 500ms ease-out;
+}
+
 footer {
   background-color: $black;
   color: white;
